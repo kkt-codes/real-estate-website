@@ -1,0 +1,325 @@
+:root {
+    --font-color: #000;
+    --bg-color: whitesmoke;
+    --hover-bg-color: #8a95cc;
+    --hover-link-color: #1114ae;
+    --submenu-bg: #fff;
+    /* --submenu-border: white; */
+    --transition: all 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--bg-color);
+    color: var(--font-color);
+    padding: 1.5rem 3rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 999;
+}
+
+.nav-logo-img img {
+    width: 9.6rem;
+    /* max-height: 10vh;
+    max-height: 10dvh; */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    /* gap: clamp(1rem, 1vw + 0.4rem, 1.5rem); */ /* Responsive gap */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    position: relative;
+    padding: 0.1rem 1.5rem;
+    /* font-weight: 500; */
+    font-family: poppins-medium;
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--font-color);
+    padding: 1.5rem 1.5rem;
+    transition: var(--transition);
+}
+
+/* .link:hover {
+    background: var(--hover-bg-color);
+} */
+
+.arrow {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-left: 0.2rem solid var(--font-color);
+    border-bottom: 0.2rem solid var(--font-color);
+    transform: rotate(-45deg);
+    margin-left: 0.8rem;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    background: var(--submenu-bg);
+    border: none; /* 1px solid var(--submenu-border); */
+    top: 100%;
+    left: 1rem;
+    min-width: 18rem;
+    padding: 1rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.sub-menu::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: 2rem;
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid var(--submenu-bg);
+}
+
+.sub-menu li {
+    list-style: none;
+    padding: 1rem 1.5rem;
+    border-bottom: 0.1rem solid rgba(164, 195, 222, 0.412);
+}
+
+.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu li a {
+    color: var(--font-color);
+    text-decoration: none;
+    display: block;
+    transition: var(--transition);
+}
+
+.sub-menu li a:hover {
+    /* background: var(--hover-bg-color); */
+    transform: translateX(0.8rem); 
+    color: var(--hover-link-color);
+}
+
+.nav-item:hover .sub-menu {
+    display: block;
+}
+
+/* .nav-item:hover .link {
+    color: #1417ca;
+} */
+
+.btn-login {
+    background: #06acf3;
+    /* color: white; */
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1.3rem;
+}
+
+.btn-login a {
+    color: white;
+    text-decoration: none;
+    font-family: poppins-medium;
+    font-size: 1.6rem;
+}
+
+.btn-login:hover {
+    /* background: var(--hover-bg-color); */
+    transform: scale(1.05); /* Increase size by 5% */
+    box-shadow: 0 0 1.5rem rgba(96, 184, 239, 0.4); /* Glowing effect */
+}
+
+.hamburger-menu{
+    background-color: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: none;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.hamburger-menu img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.close-sidebar-button{
+    display: none;
+}
+
+@media (max-width: 1250px) {
+    .nav-list {
+        gap: 1rem; /* Decrease gap between links */
+    }
+}
+
+@media (max-width: 1190px) {
+    .nav-list {
+        gap: 0.5rem; /* Decrease gap between links */
+    }
+}
+
+@media (max-width: 1092px) {
+    .navbar {
+        justify-content: space-between;
+        /* padding: 15px; */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen to the right */
+        width: 25rem;
+        height: 100vh;
+        background: var(--bg-color);
+        transition: right 0.3s ease-in-out;
+        box-shadow: -0.2rem 0 0.5rem rgba(0, 0, 0, 0.5);
+        /* z-index: 1000; */
+        padding-top: 2rem;
+    }
+
+    .nav-list.active {
+        right: 0; /* Slide in when active */
+        width: 50%;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: left;
+        padding: 1rem 2rem;
+    }
+
+    .link {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sub-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        background: var(--submenu-bg);
+        box-shadow: none;
+        padding-left: 2rem;
+    }
+
+    .sub-menu.active {
+        display: block;
+        text-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .nav-item:hover{
+        background-color: aliceblue;
+    }
+
+    .nav-item:hover .sub-menu {
+        display: none; /* Prevent submenus from showing on hover */
+    }
+
+    .sub-menu:hover{
+        transform:none;
+        transition: none;
+    }
+
+    .sub-menu::before {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .close-sidebar-button {
+        display: flex;
+        justify-self: flex-end;
+        padding: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        position: fixed; /* Fixed positioning to overlay on content */
+        top: 0;
+        left: -25rem; /* Start hidden off-screen */
+        width: 25rem; /* Full width */
+        height: 100vh; /* Full height */
+        background: var(--bg-color);
+        transition: left 0.3s ease; /* Smooth transition */
+        box-shadow: 0.2rem 0 0.5rem rgba(0, 0, 0, 0.5);
+        z-index: 9999; /* Above other content */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+        overscroll-behavior: contain; /* Prevent scrolling from affecting body */
+    }
+
+    .sidebar.active {
+        left: 0; /* Slide in when active */
+    }
+
+    .close-sidebar-button img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+}
+
+@media (min-width: 901px) and (max-width: 1091px) { 
+    .sidebar.active {
+        width:35%;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 900px) { 
+    .sidebar.active {
+        width:45%;
+        /* overflow-y: auto; 
+        overscroll-behavior: contain; */ 
+    }
+}
+
+@media (min-width: 480px) and (max-width: 700px) { 
+    .sidebar.active {
+        width: 65%;
+        /* overflow-y: auto; 
+        overscroll-behavior: contain;  */
+    }
+}
+
+ @media (max-width: 480px) {
+    .sidebar.active {
+        width: 100%;
+        /* overflow-y: auto; 
+        overscroll-behavior: contain;  */
+    }
+}

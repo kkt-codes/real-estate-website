@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="../header_footer/header.css">
+<header>
+    <nav class="navbar">
+        <button class="hamburger-menu">
+            <img src="../assets/icons/menu_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
+        </button>
+        <!-- 1st container -->
+        <div class="nav-logo-img">
+            <img src="../assets/MKO-company-images/MKO-logo-transparent-bg.png" alt="A logo of MKO Real Estate Company">
+        </div>
+
+        <!-- 2nd container -->
+        <ul class="nav-list sidebar">
+            <li>
+                <button class="close-sidebar-button">
+                    <img src="../assets/icons/close_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
+                </button>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="link">
+                    <span class="title">Home</span>    
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="link">
+                    <span class="title">Listing</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class = "sub-menu">
+                    <li><a href="#">Sales</a></li>
+                    <li><a href="#">Rental</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="link">
+                    <span class="title">Property</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class = "sub-menu">
+                    <li><a href="#">Villa</a></li>
+                    <li><a href="#">Apartment</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="link">
+                    <span class="title">About</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class = "sub-menu">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Faq</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="link">
+                    <span class="title">Book Now</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class = "sub-menu">
+                    <li><a href="#">Contact Form</a></li>
+                    <li><a href="#">Contact Details</a></li>
+                </ul>
+            </li>
+
+            <!-- <li class="nav-item">
+                <a href="#">
+                    <img class="person-icon" src="../assets/icons/person_24dp_000000_FILL0_wght100.svg" alt="A person icon"> 
+                    <span class="login-register">Login/Register</span> 
+                </a>
+            </li> -->
+        </ul>
+
+        <!-- 3rd container -->
+        <div class="btn-container">
+            <button class = "btn-login">
+                <span></span>
+                <a href="#">Login</a>
+            </button>
+        </div>
+  </nav>
+</header>

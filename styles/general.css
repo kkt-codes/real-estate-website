@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Fonts */
+@font-face {
+    font-family: 'poppins-bold';
+    src: url('../assets/fonts/poppins-bold-webfont.woff2') format('woff2'),
+         url('../assets/fonts/poppins-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppins-italic';
+    src: url('../assets/fonts/poppins-italic-webfont.woff2') format('woff2'),
+         url('../assets/fonts/poppins-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppins-medium';
+    src: url('../assets/fonts/poppins-medium-webfont.woff2') format('woff2'),
+         url('../assets/fonts/poppins-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppins-regular';
+    src: url('../assets/fonts/poppins-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/poppins-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppins-semibold';
+    src: url('../assets/fonts/poppins-semibold-webfont.woff2') format('woff2'),
+         url('../assets/fonts/poppins-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html{
+    font-family: poppins-regular, 'Segoe UI', verdana, Helvetica, 'Trebuchet MS', sans-serif;
+    scroll-behavior: smooth; 
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+body{
+    min-height: 100vh;  /* Fallback for browsers that don't support dvh */
+    min-height: 100dvh; /* -For modern browsers
+                           -Adapts dynamically to the visible part of the viewport */
+}
