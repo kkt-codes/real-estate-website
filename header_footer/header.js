@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const navList = document.querySelector(".nav-list");
     const navItems = document.querySelectorAll(".nav-item");
 
+    // Function to toggle visibility of the hamburger menu based on screen size
+    function toggleHamburgerMenu() {
+        if (window.innerWidth > 1092) {
+            hamburgerMenu.style.display = 'none'; // Hide hamburger menu on larger screens
+        } else {
+            hamburgerMenu.style.display = 'block'; // Show hamburger menu on smaller screens
+        }
+    }
+
+    // Initial check on page load
+    toggleHamburgerMenu();
+
+    // Window resize event to toggle hamburger menu visibility
+    window.addEventListener('resize', toggleHamburgerMenu);
+    
     // Toggle sidebar visibility
     hamburgerMenu.addEventListener("click", function() {
         sidebar.classList.add("active");
