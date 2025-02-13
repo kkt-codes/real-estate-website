@@ -1,0 +1,200 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #f5efef;
+}
+
+/* Navbar */
+
+
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+
+
+
+
+/* Services Section */
+#services {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fcf9f9;
+}
+
+#services h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #209cee;
+}
+
+/* Service Panels */
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-panel {
+    background: #3498db;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.service-panel h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-panel p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Hover Effect */
+.service-panel:hover {
+    background: #143375;
+    transform: scale(1.05);
+    box-shadow: 0px 100px 80px rgba(31, 2, 251, 0.2);
+}
+/* Service Details Section */
+.service-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #f8f9f9;
+    text-align: left;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service-details h2 {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.service-details p {
+    font-size: 1.2rem;
+    color: #070707;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    width: 60%; /* Paragraph will take 60% of the width */
+}
+
+.service-details img {
+    width: 40%; /* Image will take 40% of the width */
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px; /* Add space between image and paragraph */
+}
+
+/* Hover Effect */
+.service-details:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 80px 80px rgba(35, 31, 238, 0.2);
+    transition: 0.3s;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .service-details {
+        flex-direction: column;
+        padding: 30px 10px;
+    }
+
+    .service-details h2 {
+        font-size: 2rem;
+    }
+
+    .service-details img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-details p {
+        width: 100%;
+    }
+}
+
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #3498db;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
+/* Remove underline from links */
+a {
+    text-decoration: none;
+    color: white;
+}
+a:active {
+    color: #3498db; /* Maintain the same color when clicked */
+}
+
+/* Paragraph Styling */
+/* Paragraph Styling for Service Details */
+/* Paragraph Styling for Service Details */
+.service-details p {
+    background-color: #c5ddfa;  /* Light gray background color */
+    padding: 15px;              /* Add padding to make the text more readable */
+    border-radius: 5px;         /* Rounded corners for the background */
+    box-shadow: 0 50px 50px rgba(34, 73, 210, 0.1); /* Add a subtle shadow */
+    margin-bottom: 20px;        /* Add margin for spacing between paragraphs */
+    max-width: 800px;           /* Set a maximum width for the paragraph */
+    margin-left: auto;          /* Center the paragraph horizontally */
+    margin-right: auto;         /* Center the paragraph horizontally */
+}
+.logo {
+    height: 50px; /* Adjust size as needed */
+    width: auto;  /* Keeps aspect ratio */
+}
+
+
+
+/* Optional: Add hover effect to highlight links */
+
