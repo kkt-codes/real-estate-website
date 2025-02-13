@@ -1,0 +1,206 @@
+/* Filter Section */
+#filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: #fff;
+    flex-wrap: wrap;
+    margin-top: calc(10vh + 1rem);
+    font-size: 1.6rem;
+}
+
+#filters label {
+    font-weight: 600;
+}
+
+#filters select {
+    padding: 1rem; /* Padding inside select */
+    border: 2px solid #ccc; /* Light border */
+    border-radius: 0.5rem; 
+    font-size: 1.6rem; 
+    background-color: #fff; /* White background */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Property Grid */
+#property-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30rem, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* Property Card */
+.property-card {
+    text-decoration: none;
+    background: white;
+    color: #111;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.property-card:hover {
+    transform: scale(1.03);
+}
+
+
+/* Image Container */
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Arrows for Image Navigation */
+.image-container .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding:  1.5rem 1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.image-container .arrow-left {
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.image-container .arrow-right {
+    right: 0.5rem;
+}
+
+.image-container:hover .arrow {
+    opacity: 1;
+}
+
+/* Property Type Badge */
+.btn-property-type {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 165, 0, 0.9);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+/* Property Info */
+.property-info {
+    padding: 1.5rem;
+}
+
+.property-info p {
+    margin: 0.5rem 0;
+}
+
+.property-info .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.property-info .location {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #666;
+}
+
+.property-info .location img {
+    width: 1.6rem;
+    margin-right: 0.5rem;
+}
+
+/* Property Details */
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10rem;
+}
+
+.details .detail-item {
+    display: flex;
+    align-items: center;
+}
+
+.details .detail-item img {
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.no-properties-message {
+    font-size: 2.4rem; 
+    color: #333; 
+    text-align: center; 
+    margin: 2rem 0;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 100%; 
+}
+
+/* Pagination */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+#pagination button {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: #007bff;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+#pagination button:hover {
+    background: #0056b3;
+}
+
+#pagination .page-btn.active {
+    background: #ff9800;
+}
+
+@media (max-width: 768px) {
+    #filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #property-list {
+        grid-template-columns: repeat(2, minmax(28rem, 1fr));
+    }
+
+    .property-info .details {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
