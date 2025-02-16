@@ -14,6 +14,15 @@
         include '../header_footer/header.php';
     ?>
 
+    <section class="about-intro">
+        <div class="text-container">
+            <div class="intro-text">
+                <span>Listing</span>
+                <h1>Find What You Need.</h1>
+            </div>
+        </div>
+    </section>
+
     <!-- Filter Section -->
     <section id="filters">
         <label for="propertyType">Property Type:</label>

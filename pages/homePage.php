@@ -174,7 +174,7 @@
             <a href="#" class="property-card">
                 <div class="image-container">
                     <button class="btn-property-type">For Sale</button>
-                    <img src="../assets/villas/IV-villa-sale/front_view_villa.jpg" alt="Property Image">
+                    <img src="../assets/villas/IV-villa-sale/villa_front_view.jpeg" alt="Property Image">
                 </div>
                 <div class="property-info">
                     <p class="price">$850,000</p>
@@ -242,7 +242,7 @@
             <a href="#" class="property-card">
                 <div class="image-container">
                     <button class="btn-property-type">For Sale</button>
-                    <img src="../assets/villas/V-villa-sale/villa_front_view.jpg" alt="Property Image">
+                    <img src="../assets/villas/V-villa-sale/front_view_villa.jpg" alt="Property Image">
                 </div>
                 <div class="property-info">
                     <p class="price">$950,000</p>

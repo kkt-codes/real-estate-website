@@ -303,6 +303,7 @@ header{
 
     .sidebar.active {
         left: 0; /* Slide in when active */
+        width:35%;
     }
 
     .close-sidebar-button img {
@@ -312,21 +313,19 @@ header{
 
 }
 
-@media (min-width: 901px) and (max-width: 1091px) { 
-    .sidebar.active {
-        width:35%;
-    }
-}
-
-@media (min-width: 701px) and (max-width: 900px) { 
+@media (max-width: 900px) { 
     .sidebar.active {
         width:45%;
         /* overflow-y: auto; 
         overscroll-behavior: contain; */ 
     }
+
+    .btn-login{
+        padding: 0.75rem 1.5rem;
+    }
 }
 
-@media (min-width: 480px) and (max-width: 700px) { 
+@media (max-width: 700px) { 
     .sidebar.active {
         width: 65%;
         /* overflow-y: auto; 

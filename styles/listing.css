@@ -1,3 +1,49 @@
+.about-intro{
+    background-image: url("../assets/apartments/Outside_View/ComingSoonApartment.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 30vh;
+    margin-top: 10vh;
+    overflow: hidden;
+}
+
+.about-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.629); 
+    z-index: 1; /* Places the overlay above the background */
+}
+
+.text-container{
+    max-width: 120rem;
+    margin: auto;
+}
+
+.intro-text {
+    position: relative; /* Positioning context for text */
+    color: white; 
+    z-index: 2; /* Places the text above the overlay */
+    text-align: left; 
+    padding: 9rem 0;
+}
+
+.intro-text span {
+    font-size: 1.6rem;
+    display: block; /* Make the span a block element for spacing */
+    margin-bottom: 10px; /* Space between span and heading */
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: 500;
+}
+
 /* Filter Section */
 #filters {
     display: flex;
@@ -82,8 +128,6 @@
 
 .image-container .arrow-left {
     left: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .image-container .arrow-right {

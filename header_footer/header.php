@@ -18,7 +18,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="link">
+                    <a href="../pages/homePage.php" class="link">
                         <span class="title">Home</span>    
                     </a>
                 </li>
@@ -29,8 +29,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class = "sub-menu">
-                        <li><a href="#">Sales</a></li>
-                        <li><a href="#">Rental</a></li>
+                        <li><a href="../pages/listing.php">Sales</a></li>
+                        <li><a href="../pages/listing.php">Rental</a></li>
                     </ul>
                 </li>
     
@@ -51,8 +51,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class = "sub-menu">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
+                        <li><a href="../pages/aboutUs.php">About Us</a></li>
+                        <li><a href="../pages/aboutUs.php">Faq</a></li>
                         <li><a href="#">Services</a></li>
 
                         <li><a href="#">Terms and Conditions</a></li>
@@ -60,14 +60,9 @@
                 </li>
     
                 <li class="nav-item">
-                    <a href="#" class="link">
-                        <span class="title">Book Now</span>
-                        <span class="arrow"></span>
+                    <a href="../pages/contactUs.php" class="link">
+                        <span class="title">Contact Us</span>
                     </a>
-                    <ul class = "sub-menu">
-                        <li><a href="#">Contact Form</a></li>
-                        <li><a href="#">Contact Details</a></li>
-                    </ul>
                 </li>
     
                 <!-- <li class="nav-item">
@@ -82,7 +77,7 @@
             <div class="btn-container">
                 <button class = "btn-login">
                     <span><img src="../assets/icons/login_24dp_FFF_FILL1_wght400_GRAD0_opsz24.svg" alt=""></span>
-                    <a href="#">Sign In</a>
+                    <a href="../pages/login.html">Sign In</a>
                 </button>
             </div>
         </div>

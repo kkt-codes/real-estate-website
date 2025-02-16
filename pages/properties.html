@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <link rel="stylesheet" href="../styles/properties.css">
+</head>
+<body>
+    <div class="filters">
+        <label for="propertyType">Property Type:</label>
+        <select id="propertyType">
+            <option value="villa">Villa</option>
+            <option value="apartment">Apartment</option>
+        </select>
+
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="for-rent">For Rent</option>
+            <option value="for-sale">For Sale</option>
+        </select>
+
+        <label for="bedroom">Bedrooms:</label>
+        <select id="bedroom">
+            <option value="studio">Studio</option>
+            <option value="1bedroom">1 Bedroom</option>
+            <option value="2bedroom">2 Bedroom</option>
+            <option value="3bedroom">3 Bedroom</option>
+        </select>
+
+        <label for="priceFilter">Max Price:</label>
+        <input type="number" id="priceFilter" placeholder="Max Price">
+
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div class="property-container" id="property-container">
+        <!-- Property details will be dynamically added here -->
+    </div>
+
+    <script type="module" src="../scripts/propertiesDetail.js"></script>
+</body>
+</html>
