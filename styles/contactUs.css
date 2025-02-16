@@ -1,0 +1,218 @@
+:root {
+    --bg-color: whitesmoke;
+    --container-bg: white;
+    --main-color: #06acf3;
+    --accent-color: #f4a261;
+    --border-color: #ccc;
+    --text-color: black;
+}
+
+/* About Intro Section */
+.about-intro {
+    background-image: url("../assets/MKO-company-images/reception_ist.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 30vh;
+    margin-top: 10vh;
+    overflow: hidden;
+}
+
+.about-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.629);
+    z-index: 1;
+}
+
+.text-container {
+    max-width: 120rem;
+    margin: auto;
+}
+
+.intro-text {
+    position: relative;
+    color: white;
+    z-index: 2;
+    text-align: left;
+    padding: 9rem 2rem;
+}
+
+.intro-text span {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+lable{
+    font-size: 1.6rem;
+}
+/* Body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Main Container */
+.container {
+    max-width: 120rem;
+    margin: auto;
+    padding: 15rem 2rem 5rem;
+}
+
+/* Contact Section */
+.contact-section {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures both sections have equal height */
+    padding: 3rem 0;
+}
+
+/* Contact Form and Info Container */
+.contact-container,
+.info-container {
+    flex: 1; /* Makes both sections equal width */
+    display: flex;
+    flex-direction: column;
+    background: var(--container-bg);
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensures both containers stretch equally */
+.contact-container {
+    align-items: stretch;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1; /* Ensures form stretches */
+}
+
+.contact-form h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-grow: 1;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Contact Information */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes it equal height with the form */
+    justify-content: space-between; /* Distributes content evenly */
+}
+
+/* Merge 'Our Offices' and 'Find Us' */
+.info-box h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.info-box p, 
+.info-box ul {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.info-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-box ul li {
+    margin-bottom: 1rem;
+}
+
+.info-box a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Location Section */
+.map-section {
+    margin-top: 3rem;
+    background: var(--container-bg);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+iframe {
+    width: 100%;
+    height: 30rem;
+    border-radius: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 120rem){
+    .intro-text {
+        padding: 9rem 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .contact-section {
+        flex-direction: column;
+    }
+
+    .contact-container,
+    .info-container {
+        width: 100%;
+    }
+}
