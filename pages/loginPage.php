@@ -9,10 +9,13 @@
     <script src="../scripts/login.js" defer></script>
 </head>
 <body>
+
+    
+
     <div class="container">
         <div class="form-container" id="formContainer" >
             <!-- Sign In Form -->
-            <form id="loginForm" class="form" action="http://localhost/real-estate-website/login.php" method="POST">
+            <form id="loginForm" class="form" action="../login.php" method="POST">
                 <h2>Sign In</h2>
                 <input type="email" name="email" id="loginEmail" placeholder="Email" required>
                 <input type="password" name="password" id="loginPassword" placeholder="Password" required>

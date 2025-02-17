@@ -1,17 +1,54 @@
-/* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
     color: #333;
+    font-size: 1.6rem;
 }
 
+.about-intro{
+    background-image: url("../assets/apartments/Outside_View/A_modern_apartments.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 30vh;
+    margin-top: 10vh;
+    overflow: hidden;
+}
 
+.about-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.629); 
+    z-index: 1; /* Places the overlay above the background */
+}
+
+.text-container{
+    max-width: 120rem;
+    margin: auto;
+}
+
+.intro-text {
+    position: relative; /* Positioning context for text */
+    color: white; 
+    z-index: 2; /* Places the text above the overlay */
+    text-align: left; 
+    padding: 9rem 0;
+}
+
+.intro-text span {
+    font-size: 1.6rem;
+    display: block; /* Make the span a block element for spacing */
+    margin-bottom: 10px; /* Space between span and heading */
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: 500;
+}
 
 main {
     margin-top: 50px;
@@ -22,11 +59,11 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+/* h1 {
     font-size: 2em;
     margin-bottom: 20px;
     color: #3498db;
-}
+} */
 
 h2 {
     font-size: 1.5em;
