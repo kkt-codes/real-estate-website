@@ -34,7 +34,7 @@
                     </ul>
                 </li>
     
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="link">
                         <span class="title">Property</span>
                         <span class="arrow"></span>
@@ -43,6 +43,11 @@
                         <li><a href="#">Villa</a></li>
                         <li><a href="#">Apartment</a></li>
                     </ul>
+                </li> -->
+                <li class="nav-item">
+                    <a href="../pages/servicesPage.php" class="link">
+                        <span class="title">Services</span>    
+                    </a>
                 </li>
     
                 <li class="nav-item">
@@ -53,9 +58,8 @@
                     <ul class = "sub-menu">
                         <li><a href="../pages/aboutUs.php">About Us</a></li>
                         <li><a href="../pages/aboutUs.php">Faq</a></li>
-                        <li><a href="#">Services</a></li>
-
-                        <li><a href="#">Terms and Conditions</a></li>
+                        <!-- <li><a href="../pages/servicesPage.php">Services</a></li> -->
+                        <li><a href="../pages/conditionPage.php">Terms and Conditions</a></li>
                     </ul>
                 </li>
     
@@ -77,7 +81,7 @@
             <div class="btn-container">
                 <button class = "btn-login">
                     <span><img src="../assets/icons/login_24dp_FFF_FILL1_wght400_GRAD0_opsz24.svg" alt=""></span>
-                    <a href="../pages/login.html">Sign In</a>
+                    <a href="../pages/loginPage.php">Sign In</a>
                 </button>
             </div>
         </div>

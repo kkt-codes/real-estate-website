@@ -41,6 +41,11 @@ $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="styles/dashboard.css">
 </head>
 <body>
+
+    <?php
+        include '../header_footer/header.php';
+    ?>
+
     <div class="container">
         <h1>Welcome, <?php echo htmlspecialchars($user_name); ?></h1>
 
@@ -123,5 +128,9 @@ $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <a href="logout.php">Logout</a>
     </div>
+
+    <?php
+        include '../header_footer/footer.php';
+    ?>
 </body>
 </html>

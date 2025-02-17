@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms and Conditions | MKO Real Estate</title>
+    <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/conditionPage.css">
 </head>
 <body>
-    <header>
+    
     <?php
         include '../header_footer/header.php';
     ?>
-    </header>
+
+    <section class="about-intro">
+        <div class="text-container">
+            <div class="intro-text">
+                <span>Terms & Conditions</span>
+                <h1>Understand Our Terms & Conditions</h1>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section class="terms">

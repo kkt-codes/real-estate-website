@@ -5,7 +5,8 @@ session_start();
 // Check if the user is logged in and is an agent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_SESSION['agent_id'])) {
-        echo "Unauthorized access! Please log in as an agent.";
+        $_SESSION['error'] = "Unauthorized access! Please log in as an agent.";
+        header("Location: login.php");
         exit();
     }
 
@@ -15,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate the property ID
     if (!$property_id) {
-        echo "Invalid property ID.";
+        $_SESSION['error'] = "Invalid property ID.";
+        header("Location: dashboard.php");
         exit();
     }
 
@@ -27,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Check if the property exists and if the agent is the owner
         if (!$property || $property['agent_id'] != $agent_id) {
-            echo "Unauthorized action! You can only delete properties you own.";
+            $_SESSION['error'] = "Unauthorized action! You can only delete properties you own.";
+            header("Location: dashboard.php");
             exit();
         }
 
@@ -35,16 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare("CALL DeleteProperty(?)");
         $stmt->execute([$property_id]);
 
-        // Check if deletion was successful
-        if ($stmt->rowCount() > 0) {
-            echo "Property deleted successfully!";
-        } else {
-            echo "Error: Property deletion failed. Please try again.";
-        }
+        // Set success message and redirect
+        $_SESSION['success'] = "Property deleted successfully!";
+        header("Location: dashboard.php");
+        exit();
 
     } catch (PDOException $e) {
         // Handle database-related errors
-        echo "Error: " . $e->getMessage();
+        $_SESSION['error'] = "Error: " . $e->getMessage();
+        header("Location: dashboard.php");
+        exit();
     }
 }
 ?>

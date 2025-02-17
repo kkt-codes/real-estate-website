@@ -18,10 +18,10 @@
         <nav class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="../pages/aboutUs.php">About Us</a></li>
+                <li><a href="../pages/conditionPage.php">Terms & Conditions</a></li>
+                <li><a href="../pages/servicesPage.php">Service</a></li>
+                <li><a href="../pages/contactUs.php">Contact Us</a></li>
             </ul>
         </nav>
 
