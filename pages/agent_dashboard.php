@@ -1,10 +1,10 @@
 <?php
 session_start();
-require 'backend/db_connection.php';
+require '../backend/db_connection.php';
 
-// Redirect to login if the user is not logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+// Redirect if not logged in or not an agent
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'agent') {
+    header("Location: pages/loginPage.php");
     exit();
 }
 
@@ -38,13 +38,10 @@ $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Dashboard</title>
+    <!-- <link rel="stylesheet" href="styles/general.css"> -->
     <link rel="stylesheet" href="styles/dashboard.css">
 </head>
 <body>
-
-    <?php
-        include '../header_footer/header.php';
-    ?>
 
     <div class="container">
         <h1>Welcome, <?php echo htmlspecialchars($user_name); ?></h1>
@@ -67,8 +64,8 @@ $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $property['bedrooms']; ?></td>
                         <td><?php echo $property['bathrooms']; ?></td>
                         <td>
-                            <a href="edit_property.php?id=<?php echo $property['property_id']; ?>" class="btn btn-edit">Edit</a> |
-                            <a href="delete_property.php?id=<?php echo $property['property_id']; ?>" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="../backend/edit_property.php?id=<?php echo $property['property_id']; ?>" class="btn btn-edit">Edit</a> |
+                            <a href="../backend/delete_property.php?id=<?php echo $property['property_id']; ?>" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -126,11 +123,8 @@ $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </section>
 
-        <a href="logout.php">Logout</a>
+        <a href="../backend/logout.php">Logout</a>
     </div>
 
-    <?php
-        include '../header_footer/footer.php';
-    ?>
 </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/homePage.css">
     <!-- <link rel="stylesheet" href="../header_footer/header.css"> -->
     <script src="../header_footer/header.js" defer></script>
+    <script src="../scripts/homePage.js" defer></script>
 </head>
 <body>
 
@@ -24,28 +25,26 @@
             <p>Discover the best properties for sale and rent in your ideal location.</p>
 
             <div class="search-bar">
-                <select class="search-input">
-                    <option value="" disabled selected>Property Type</option>
-                    <option value="apt-sale">Apartment- For Sale</option>
-                    <option value="apt-rent">Apartment- For Rent</option>
-                    <option value="villa-sale">Villa- For Sale</option>
-                    <option value="villa-rent">Villa- For Rent</option>
+                <select class="search-input" id="hero-property-type">
+                    <option value="all" selected>Property Type</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="villa">Villa</option>
                 </select>
 
-                <select class="search-input">
-                    <option value="" disabled selected>Location</option>
-                    <option value="ayat">Ayat</option>
-                    <option value="cmc">CMC</option>
-                    <option value="meri">Meri</option>
-                    <option value="bole">Bole</option>
-                    <option value="kaliti">Semit</option>
+                <select class="search-input" id="hero-location">
+                    <option value="all" selected>Location</option>
+                    <option value="Ayat">Ayat</option>
+                    <option value="CMC">CMC</option>
+                    <option value="Meri">Meri</option>
+                    <option value="Bole">Bole</option>
+                    <option value="Semit">Semit</option>
                 </select>
 
-                <input type="text" class="search-input" placeholder="Max Price ($)">
+                <input type="text" class="search-input" id="hero-max-price" placeholder="Max Price ($)">
 
                 <span class="advanced-search">Advanced Search</span>
 
-                <button class="search-btn">Search</button>
+                <button class="search-btn" id="hero-search-btn">Search</button>
             </div>
         </div>
     </section>
@@ -101,210 +100,7 @@
     <section class="featured-properties">
         <h2>Featured Properties</h2>
         <p>Discover our top properties available for sale or rent.</p>
-        <div class="properties-grid">
-            <!-- 1st property START -->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Sale</button>
-                    <img src="../assets/apartments/2Bedroom/II-2bedroom-rent/interior_2_bedroom_apartment.jpeg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$1,200,000</p>
-                    <p class="description">Luxury apartment with modern amenities.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon"> 
-                        <span>Bole, Addis Ababa</span>
-                    </p>
-                    
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>2000 sqm</span>
-                        </div>
-                       
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon"> 
-                            <span>3 Beds</span>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon"> 
-                            <span>2 Baths</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 1st property END -->
-
-            <!-- 2nd property START -->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Rent</button>
-                    <img src="../assets/villas/I-villa-rent/villa-frontView.jpeg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$3,000/month</p>
-                    <p class="description">Spacious family house with a garden.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                        <span>Semit, Addis Ababa</span> 
-                    </p>
-                    
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>2500 sqm</span>
-                        </div>
-
-                        <span class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon">
-                            <span>4 Beds</span>
-                        </span>
-
-                        <span class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon">
-                            <span>3 Baths</span>
-                        </span>
-                    </div>
-                </div>
-            </a>
-            <!-- 2nd property END -->
-
-            <!-- 3rd property START-->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Sale</button>
-                    <img src="../assets/villas/IV-villa-sale/villa_front_view.jpeg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$850,000</p>
-                    <p class="description">Modern condo in a prime location.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                        <span>Ayat, Addis Ababa</span>
-                    </p>
-
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>1800 sqm</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon"> 
-                            <span>2 beds</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon"> 
-                            <span>2 Baths</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 3rd property END -->
-
-            <!-- 4th property START -->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Rent</button>
-                    <img src="../assets/apartments/3Bedroom/II-3bedroom-rent/interior_3bedroom.jpeg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$2,500/month</p>
-                    <p class="description">Cozy home in a quiet neighborhood.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                        <span>Kaliti, Addis Ababa</span>
-                    </p>
-                    
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>2200 sqm</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon"> 
-                            <span>3 Beds</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon"> 
-                            <span>2 Baths</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 4th property END -->
-
-            <!-- 5th property START -->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Sale</button>
-                    <img src="../assets/villas/V-villa-sale/front_view_villa.jpg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$950,000</p>
-                    <p class="description">Elegant villa with a stunning view.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                        <span>Meri, Addis Ababa</span>
-                    </p>
-                    
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>3000 sqm</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon" style="height: 30px"> 
-                            <span>5 Beds</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon"> 
-                            <span>4 Baths</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 5th property END -->
-
-            <!-- 6th property START-->
-            <a href="#" class="property-card">
-                <div class="image-container">
-                    <button class="btn-property-type">For Rent</button>
-                    <img src="../assets/apartments/1Bedroom/I-1bedroom-rent/1Bedroom_apartment_interior.jpeg" alt="Property Image">
-                </div>
-                <div class="property-info">
-                    <p class="price">$4,000/month</p>
-                    <p class="description">High-end penthouse with city skyline view.</p>
-                    <p class="location">
-                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                        <span>CMC, Addis Ababa</span>
-                    </p>
-
-                    <div class="details">
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                            <span>150 sqm</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon">
-                            <span>4 Beds</span>
-                        </div>
-
-                        <div class="detail-item">
-                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon" style="height: 30px">
-                            <span>3 Baths</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 6th property END -->
+        <div class="properties-grid" id="featured-property-list">
         </div>
     </section>
     <!-- Featured Properties END -->
@@ -374,7 +170,7 @@
                 <h2>Find Your Dream Home Today!</h2>
                 <p>Browse our extensive listings and take the first step towards your new home.</p>
             </div>
-            <a href="#" class="cta-button">
+            <a href="./listing.php" class="cta-button">
                 <button>Get Started</button>
             </a>
         </div>

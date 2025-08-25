@@ -36,7 +36,7 @@
 .intro-text span {
     font-size: 1.6rem;
     display: block; /* Make the span a block element for spacing */
-    margin-bottom: 10px; /* Space between span and heading */
+    margin-bottom: 1rem; /* Space between span and heading */
 }
 
 h1{
@@ -53,7 +53,7 @@ h1{
     padding: 2rem;
     background-color: #fff;
     flex-wrap: wrap;
-    margin-top: calc(10vh + 1rem);
+    margin-top: 2rem;
     font-size: 1.6rem;
 }
 
@@ -63,148 +63,208 @@ h1{
 
 #filters select {
     padding: 1rem; /* Padding inside select */
-    border: 2px solid #ccc; /* Light border */
+    border: 0.2rem solid #ccc; /* Light border */
     border-radius: 0.5rem; 
     font-size: 1.6rem; 
     background-color: #fff; /* White background */
     transition: border-color 0.3s; /* Smooth transition for border color */
 }
 
-/* Property Grid */
+/* Property Grid - This is now #property-list to match your HTML */
 #property-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     gap: 2rem;
     padding: 2rem;
     max-width: 120rem;
     margin: 0 auto;
 }
 
-/* Property Card */
+/* --------- Property Card Styles (Matches homepage) --------- */
 .property-card {
-    text-decoration: none;
-    background: white;
-    color: #111;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    background-color: white;
+    text-decoration: none;
+    color: inherit;
+    max-width: 40rem;
+    display: block; /* Changed from flex to block for positioning context */
     position: relative;
-    font-size: 1.6rem;
+    box-shadow: 
+        0 -0.4rem 1rem rgba(0, 0, 0, 0.1),
+        0 0.4rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .property-card:hover {
-    transform: scale(1.03);
+    box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.15);
 }
 
+.property-card:hover .image-container img {
+    transform: scale(1.05);
+}
 
-/* Image Container */
 .image-container {
     position: relative;
-    width: 100%;
     overflow: hidden;
 }
 
 .image-container img {
     width: 100%;
-    height: 20rem;
+    height: 25rem;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
 
-/* Arrows for Image Navigation */
-.image-container .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding:  1.5rem 1rem;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.image-container .arrow-left {
-    left: 0.5rem;
-}
-
-.image-container .arrow-right {
-    right: 0.5rem;
-}
-
-.image-container:hover .arrow {
-    opacity: 1;
-}
-
-/* Property Type Badge */
 .btn-property-type {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: rgba(255, 165, 0, 0.9);
+    z-index: 2;
+    background: #06acf3;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    font-weight: bold;
     border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 
-/* Property Info */
+.property-info-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .property-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.property-info p {
-    margin: 0.5rem 0;
+.property-info > p {
+    text-align: left;
 }
 
-.property-info .price {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #007bff;
+.price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #06acf3;
+    margin-bottom: 1rem;
 }
 
-.property-info .location {
+.description {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    min-height: 4rem;
+}
+
+.location {
     display: flex;
     align-items: center;
-    font-size: 1.4rem;
-    color: #666;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
 }
 
-.property-info .location img {
-    width: 1.6rem;
+.location img {
+    width: 2rem;
+    height: 2rem;
     margin-right: 0.5rem;
 }
 
-/* Property Details */
 .details {
     display: flex;
     justify-content: space-between;
-    margin-top: 10rem;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    border-top: 0.1rem solid #ddd;
+    position: relative;
+    width: 100%;
 }
 
-.details .detail-item {
+.detail-item {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    text-align: center;
 }
 
-.details .detail-item img {
+.detail-item img {
     width: 2rem;
-    margin-right: 0.5rem;
+    height: 2rem;
 }
 
+
+/* --- Interactive Elements --- */
+.bookmark-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #f4a261;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.bookmark-btn:hover {
+    background: white;
+}
+.bookmark-btn.bookmarked {
+    color: #e76f51;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+.image-container:hover .carousel-btn {
+    opacity: 1;
+}
+
+/* Message for no properties found */
 .no-properties-message {
     font-size: 2.4rem; 
     color: #333; 
     text-align: center; 
     margin: 2rem 0;
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    width: 100%; 
+    width: 100%;
+    grid-column: 1 / -1; /* Make it span all columns in the grid */
 }
 
 /* Pagination */
@@ -233,6 +293,7 @@ h1{
     background: #ff9800;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     #filters {
         flex-direction: column;
@@ -240,11 +301,6 @@ h1{
     }
 
     #property-list {
-        grid-template-columns: repeat(2, minmax(28rem, 1fr));
-    }
-
-    .property-info .details {
-        flex-direction: column;
-        gap: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     }
 }

@@ -15,42 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 2. Phone number format feedback
-    const phoneInput = document.getElementById('phone');
-    const phoneFeedback = document.createElement('span');
-    phoneFeedback.style.color = 'red';
-    phoneInput.parentElement.appendChild(phoneFeedback);
-    
-    phoneInput.addEventListener('input', function() {
-        const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
-        
-        if (!phonePattern.test(phoneInput.value)) {
-            phoneFeedback.style.display = 'block';
-            phoneFeedback.textContent = 'Phone number must be in the format: 123-456-7890';
-        } else {
-            phoneFeedback.style.display = 'none';
-        }
-    });
-
-    // 3. Smooth scrolling for anchor links
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
-    
-    
-    // 4. Email and phone validation
+    // 2. Email and phone validation
     const emailInput = document.getElementById('email');
     
     emailInput.addEventListener('input', function() {

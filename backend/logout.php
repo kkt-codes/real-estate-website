@@ -5,6 +5,6 @@ session_unset();
 // Destroy the session
 session_destroy();
 // Redirect to login page
-header("Location: pages/homePage.php");
+header("Location: ../pages/homePage.php");
 exit();
 ?>

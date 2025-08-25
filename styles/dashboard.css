@@ -1,18 +1,18 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    /* height: 100vh; */
     background-color: #f4f4f4;
 }
 
 .container {
     width: 90%;
     max-width: 1000px;
+    height: 80vh;
     background: white;
     padding: 20px;
     border-radius: 8px;

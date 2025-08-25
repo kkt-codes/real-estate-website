@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../header_footer/header.css">
+<script src="../header_footer/header.js" defer></script>
 <header>
     <nav class="navbar">
         <div class="navbar-inner">
@@ -29,8 +30,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class = "sub-menu">
-                        <li><a href="../pages/listing.php">Sales</a></li>
-                        <li><a href="../pages/listing.php">Rental</a></li>
+                        <li><a href="../pages/listing.php?status=for-sale">Sales</a></li>
+                        <li><a href="../pages/listing.php?status=for-rent">Rental</a></li>
                     </ul>
                 </li>
     
@@ -57,7 +58,7 @@
                     </a>
                     <ul class = "sub-menu">
                         <li><a href="../pages/aboutUs.php">About Us</a></li>
-                        <li><a href="../pages/aboutUs.php">Faq</a></li>
+                        <!-- <li><a href="../pages/aboutUs.php">Faq</a></li> -->
                         <!-- <li><a href="../pages/servicesPage.php">Services</a></li> -->
                         <li><a href="../pages/conditionPage.php">Terms and Conditions</a></li>
                     </ul>

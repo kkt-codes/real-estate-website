@@ -54,7 +54,7 @@ h1 {
     font-weight: 500;
 }
 
-lable{
+label{
     font-size: 1.6rem;
 }
 /* Body */
@@ -96,17 +96,22 @@ body {
     align-items: stretch;
 }
 
-/* Contact Form Styling */
-.contact-form {
+/* Contact Section - Side by Side for Large Screens */
+.contact-section {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    flex-grow: 1; /* Ensures form stretches */
+    gap: 3rem;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures both sections have equal height */
+    flex-wrap: wrap; /* Allows stacking on smaller screens */
 }
 
-.contact-form h2 {
+.container h2 {
     font-size: 3rem;
     margin-bottom: 2rem;
+}
+
+p, label{
+    font-size: 1.6rem;
 }
 
 .input-group {
@@ -170,7 +175,7 @@ textarea {
 }
 
 .info-box ul {
-    list-style-type: none;
+    /* list-style-type: none; */
     padding: 0;
 }
 
@@ -178,10 +183,9 @@ textarea {
     margin-bottom: 1rem;
 }
 
-.info-box a {
-    text-decoration: none;
+.info-box span {
     color: var(--text-color);
-    font-weight: bold;
+    font-weight: 400;
 }
 
 /* Location Section */
