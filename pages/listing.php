@@ -52,6 +52,16 @@
         <select id="price" style="display: none;">
             <!-- Options will be dynamically updated based on the status -->
         </select>
+
+        <label for="location">Location:</label>
+        <select id="location">
+            <option value="all">All</option>
+            <option value="Ayat">Ayat</option>
+            <option value="CMC">CMC</option>
+            <option value="Meri">Meri</option>
+            <option value="Bole">Bole</option>
+            <option value="Semit">Semit</option>
+        </select>
     </section>
 
     <!-- Property Listing Grid -->

@@ -50,3 +50,20 @@ button:hover {
 .hidden {
     display: none;
 }
+
+.user-type-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.user-type-selection label {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.user-type-selection input[type="radio"] {
+    margin: 0;
+}

@@ -52,7 +52,7 @@
             <p>MKO Real Estate reserves the right to modify or update these Terms and Conditions at any time. Changes will be reflected on this page, and you are encouraged to review them periodically.</p>
 
             <h2>9. Contact Us</h2>
-            <p>If you have any questions regarding these Terms and Conditions, please contact us at <a href="mailto:info@mko-realestate.com">info@mko-realestate.com</a>.</p>
+            <p>If you have any questions regarding these Terms and Conditions, please contact us at <a href="mailto:MKO@realestate.com">MKO@realestate.com</a>.</p>
         </section>
     </main>
 

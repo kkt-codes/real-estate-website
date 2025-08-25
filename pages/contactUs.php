@@ -27,27 +27,34 @@
         <section class="contact-section">
             <!-- Form Container -->
             <div class="contact-container">
-                <form action="#" method="POST" class="contact-form">
-                    <h2>Get in Touch</h2>
-                    <div class="input-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Eg. John Doe">
+            <form action="../backend/appointment.php" method="POST" class="contact-form">
+                <h2>Get in Touch</h2>
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Eg. John Doe">
 
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" required>
 
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="Eg. johndoe@example.com">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Eg. johndoe@example.com">
 
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Eg. Project Inquiry">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Eg. Project Inquiry">
 
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" cols="30" rows="6" required placeholder="Write your message here..."></textarea>
+                    <label for="property_id">Property ID (If applicable)</label>
+                    <input type="number" id="property_id" name="property_id" placeholder="Enter property ID">
 
-                        <input type="submit" value="Submit" class="btn">
-                    </div>
-                </form>
+                    <label for="appointment_date">Appointment Date</label>
+                    <input type="datetime-local" id="appointment_date" name="appointment_date" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" cols="30" rows="6" required placeholder="Write your message here..."></textarea>
+
+                    <input type="submit" value="Submit" class="btn">
+            </div>
+        </form>
+
             </div>
 
             <!-- Contact Info Container -->
@@ -64,9 +71,9 @@
                             <strong>Branches:</strong>
                         </p>
                         <ul>
-                            <li><a href="#">456 Branch Street, City, State, 56789</a></li>
-                            <li><a href="#">789 Another St, City, State, 56789</a></li>
-                            <li><a href="#">101 Second Ave, City, State, 56789</a></li>
+                            <li><span>456 Branch Street, City, State, 56789</span></li>
+                            <li><span>789 Another St, City, State, 56789</span></li>
+                            <li><span>101 Second Ave, City, State, 56789</span></li>
                         </ul>
                     </div>
 

@@ -1,5 +1,5 @@
 <?php
-require 'backend/db_connection.php';
+require 'db_connection.php';
 session_start();
 
 // Check if the user is logged in and is an agent

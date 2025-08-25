@@ -1,191 +1,294 @@
-import properties from '../scripts/listings/properties.js';
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const propertyList = document.getElementById("property-list");
+    const propertyType = document.getElementById("propertyType");
+    const statusFilter = document.getElementById("status");
+    const bedroomFilter = document.getElementById("bedroom");
+    const priceFilter = document.getElementById("price");
+    const locationFilter = document.getElementById("location");
+    const priceLabel = document.getElementById("price-label");
+    const pageButtons = document.querySelectorAll(".page-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
 
-// DOM Elements
-const propertyList = document.getElementById("property-list");
-const propertyType = document.getElementById("propertyType");
-const statusFilter = document.getElementById("status");
-const bedroomFilter = document.getElementById("bedroom");
-const priceFilter = document.getElementById("price");
-const priceLabel = document.getElementById("price-label");
-const pageButtons = document.querySelectorAll(".page-btn");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
+    let currentPage = 1;
+    const itemsPerPage = 9;
+    let allProperties = [];
 
-let currentPage = 1;
-const itemsPerPage = 9;
+    // --- Data Fetching ---
 
-// Function to generate property HTML
-function createPropertyCard(property) {
-    const priceText = property.status === "for-rent" 
-        ? `$${property.price.toLocaleString()}/month` 
-        : `$${property.price.toLocaleString()}`;
+    // Fetches all properties and checks which ones are bookmarked by the current user
+    async function fetchProperties() {
+        try {
+            // Fetch all properties first
+            const propertiesResponse = await fetch('../backend/get_properties.php');
+            if (!propertiesResponse.ok) throw new Error('Network response was not ok');
+            allProperties = await propertiesResponse.json();
 
-    return `
-        <a href="#" class="property-card" data-id="${property.id}">
-            <div class="image-container">
-                <button class="btn-property-type">${property.status.replace("-", " ")}</button>
-                <img src="${property.images[0]}" alt="Property Image">
-                <button class="arrow arrow-left">&#10094</button>
-                <button class="arrow arrow-right">&#10095</button>
-            </div>
-            <div class="property-info">
-                <p class="price">${priceText}</p>
-                <p class="description">Beautiful ${property.bedroom} ${property.type} available ${property.status.replace("-", " ")}.</p>
-                <p class="location">
-                    <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
-                    <span>Somewhere in Addis Ababa</span>
-                </p>
-                <div class="details">
-                    <div class="detail-item">
-                        <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
-                        <span>150 sqm</span>
-                    </div>
-                    <div class="detail-item">
-                        <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bed icon">
-                        <span>${property.bedroom.replace("bedroom", "")} Beds</span>
-                    </div>
-                    <div class="detail-item">
-                        <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon">
-                        <span>2 Baths</span>
-                    </div>
+            // Then, fetch the list of IDs for properties bookmarked by the user
+            const bookmarkedResponse = await fetch('../backend/get_bookmarks.php');
+            const bookmarkedIds = await bookmarkedResponse.json();
+
+            // Add an 'isBookmarked' flag to each property object for easier checking
+            allProperties.forEach(p => {
+                p.isBookmarked = bookmarkedIds.includes(p.property_id.toString());
+            });
+
+            updatePropertyList();
+        } catch (error) {
+            console.error('Failed to fetch properties:', error);
+            propertyList.innerHTML = '<p class="no-properties-message">Failed to load properties. Please try again later.</p>';
+        }
+    }
+
+    // --- Card Creation ---
+
+    // Generates the HTML for a single, interactive property card
+    function createPropertyCard(property) {
+        const image = property.images.split(',')[0];
+        const price = property.status === 'for-rent'
+            ? `<span class="price">$${Number(property.price).toLocaleString()}/month</span>`
+            : `<span class="price">$${Number(property.price).toLocaleString()}</span>`;
+        
+        const status_button = property.status === 'for-rent'
+            ? `<button class="btn-property-type">For Rent</button>`
+            : `<button class="btn-property-type">For Sale</button>`;
+        
+        // This line is only needed for listing.js, but it's safe to have in both
+        const bookmarkedClass = property.isBookmarked ? 'bookmarked' : '';
+        const bookmarkIcon = property.isBookmarked ? '&#x2605;' : '&#x2606;';
+
+        // Check which script is running to include bookmark/carousel only for listing.js
+        const isListingPage = window.location.pathname.includes('listing.php');
+        
+        const interactiveElements = isListingPage ? `
+            <button class="bookmark-btn ${bookmarkedClass}" data-property-id="${property.property_id}">${bookmarkIcon}</button>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+        ` : '';
+
+        return `
+            <div class="property-card" data-property-id="${property.property_id}" data-images="${property.images}" data-current-image-index="0">
+                <div class="image-container">
+                    ${status_button}
+                    ${interactiveElements}
+                    <img src="${image}" alt="Property Image">
                 </div>
+                <a href="property_detail.php?id=${property.property_id}" class="property-info-link">
+                    <div class="property-info">
+                        ${price}
+                        <p class="description">${property.short_description}</p>
+                        <p class="location">
+                            <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
+                            <span>${property.location}</span>
+                        </p>
+                        <div class="details">
+                            <div class="detail-item">
+                                <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
+                                <span>${property.area} sqm</span>
+                            </div>
+                            <div class="detail-item">
+                                <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bedroom icon">
+                                <span>${property.bedrooms} Beds</span>
+                            </div>
+                            <div class="detail-item">
+                                <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon">
+                                <span>${property.bathrooms} Baths</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
-    `;
-}
+        `;
+    }
 
-// Function to filter and display properties
-function updatePropertyList() {
-    let filteredProperties = properties.filter(p => 
-        (propertyType.value === "all" || p.type === propertyType.value) &&
-        (statusFilter.value === "all" || p.status === statusFilter.value) &&
-        (bedroomFilter.value === "all" || p.bedroom === bedroomFilter.value)
-    );
+    // --- Event Handling ---
 
-    // Apply price filter if status is selected
-    if (statusFilter.value === "for-rent") {
-        if (priceFilter.value === "less") {
-            filteredProperties = filteredProperties.filter(p => p.price < 1000);
-        } else if (priceFilter.value === "greater") {
-            filteredProperties = filteredProperties.filter(p => p.price >= 1000);
+    // Single event listener on the parent container for efficiency
+    propertyList.addEventListener('click', (event) => {
+        const target = event.target;
+
+        // Logic for Carousel Arrow clicks
+        if (target.classList.contains('carousel-btn')) {
+            event.preventDefault(); // Stop the card's main link from being followed
+            const card = target.closest('.property-card');
+            const images = card.dataset.images.split(',');
+            let currentIndex = parseInt(card.dataset.currentImageIndex, 10);
+
+            if (target.classList.contains('next')) {
+                currentIndex = (currentIndex + 1) % images.length;
+            } else if (target.classList.contains('prev')) {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            }
+
+            card.dataset.currentImageIndex = currentIndex;
+            const imgElement = card.querySelector('.image-container img');
+            imgElement.src = images[currentIndex];
         }
-    } else if (statusFilter.value === "for-sale") {
-        const priceRanges = {
-            "90-200k": [90000, 200000],
-            "200-500k": [200001, 500000],
-            "500-1000k": [500001, 1000000],
-            "1000-5000k": [1000001, 5000000]
-        };
-        if (priceFilter.value in priceRanges) {
-            filteredProperties = filteredProperties.filter(p => 
-                p.price >= priceRanges[priceFilter.value][0] && 
-                p.price <= priceRanges[priceFilter.value][1]
-            );
+
+        // Logic for Bookmark Button clicks
+        if (target.classList.contains('bookmark-btn')) {
+            event.preventDefault(); // Stop the card's main link from being followed
+            const propertyId = target.dataset.propertyId;
+            handleBookmark(propertyId, target);
+        }
+    });
+
+    // Handles the backend communication for bookmarking
+    async function handleBookmark(propertyId, button) {
+        try {
+            const response = await fetch('../backend/bookmark.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ property_id: propertyId })
+            });
+
+            if (response.status === 403) {
+                alert('Please log in as a customer to bookmark properties.');
+                window.location.href = 'loginPage.php';
+                return;
+            }
+
+            const result = await response.json();
+            if (result.status === 'added') {
+                button.innerHTML = '&#x2605;'; // Solid star
+                button.classList.add('bookmarked');
+            } else if (result.status === 'removed') {
+                button.innerHTML = '&#x2606;'; // Hollow star
+                button.classList.remove('bookmarked');
+            }
+        } catch (error) {
+            console.error('Bookmark error:', error);
         }
     }
 
-    // Check for no matches and display message if needed
-    if (filteredProperties.length === 0) {
-        propertyList.innerHTML = 
-            '<p class="no-properties-message">No properties found</p>'; // Display message
-        return; // Exit the function
-    }
-
-    // Pagination
-    const start = (currentPage - 1) * itemsPerPage;
-    const paginatedProperties = filteredProperties.slice(start, start + itemsPerPage);
+    // --- Filtering and Pagination (Unchanged) ---
     
-    // Render properties
-    propertyList.innerHTML = paginatedProperties.map(createPropertyCard).join("");
+    // Updates the property list based on current filters and page
+    function updatePropertyList() {
+        let filteredProperties = allProperties.filter(p => 
+            (propertyType.value === "all" || p.type === propertyType.value) &&
+            (statusFilter.value === "all" || p.status === statusFilter.value) &&
+            (bedroomFilter.value === "all" || p.bedrooms == bedroomFilter.value.replace('bedroom', '')) &&
+            (locationFilter.value === "all" || p.location === locationFilter.value)
+        );
+        
+        if (priceFilter.value && priceFilter.value !== 'all') {
+            const price = parseInt(priceFilter.value, 10);
+            if (statusFilter.value === 'for-rent') {
+                if (price === 1000) filteredProperties = filteredProperties.filter(p => p.price < 1000);
+                else if (price === 5000) filteredProperties = filteredProperties.filter(p => p.price >= 1000 && p.price <= 5000);
+                else if (price === 5001) filteredProperties = filteredProperties.filter(p => p.price > 5000);
+            } else if (statusFilter.value === 'for-sale') {
+                if (price === 200000) filteredProperties = filteredProperties.filter(p => p.price < 200000);
+                else if (price === 500000) filteredProperties = filteredProperties.filter(p => p.price >= 200000 && p.price <= 500000);
+                else if (price === 1000000) filteredProperties = filteredProperties.filter(p => p.price > 500000 && p.price <= 1000000);
+                else if (price === 1000001) filteredProperties = filteredProperties.filter(p => p.price > 1000000);
+            }
+        }
 
-    // Add event listeners for image navigation
-    addImageNavigationListeners();
-}
+        if (filteredProperties.length === 0) {
+            propertyList.innerHTML = '<p class="no-properties-message">No properties found matching your criteria.</p>';
+            return;
+        }
 
-// Function to update price filter options based on status
-function updatePriceFilter() {
-    priceFilter.innerHTML = "";
-    priceFilter.style.display = "none";
-    priceLabel.style.display = "none";
-
-    if (statusFilter.value === "for-rent") {
-        priceFilter.innerHTML = `
-            <option value="less">Less than $1000/month</option>
-            <option value="greater">Greater than $1000/month</option>
-        `;
-        priceFilter.style.display = "inline-block";
-        priceLabel.style.display = "inline-block";
-    } else if (statusFilter.value === "for-sale") {
-        priceFilter.innerHTML = `
-            <option value="90-200k">$90,000 - $200,000</option>
-            <option value="200-500k">$200,000 - $500,000</option>
-            <option value="500-1000k">$500,000 - $1,000,000</option>
-            <option value="1000-5000k">$1,000,000 - $5,000,000</option>
-        `;
-        priceFilter.style.display = "inline-block";
-        priceLabel.style.display = "inline-block";
+        const start = (currentPage - 1) * itemsPerPage;
+        const paginatedProperties = filteredProperties.slice(start, start + itemsPerPage);
+        
+        propertyList.innerHTML = paginatedProperties.map(createPropertyCard).join("");
     }
-}
 
-// Function to handle image navigation
-function addImageNavigationListeners() {
-    document.querySelectorAll(".property-card").forEach(card => {
-        const leftArrow = card.querySelector(".arrow-left");
-        const rightArrow = card.querySelector(".arrow-right");
-        const imgElement = card.querySelector("img");
-        const propertyId = parseInt(card.dataset.id);
-        const property = properties.find(p => p.id === propertyId);
-        let currentIndex = 0;
+    function updatePriceFilter() {
+        priceFilter.innerHTML = ""; // Clear existing options
+        priceFilter.style.display = "none";
+        priceLabel.style.display = "none";
 
-        // Function to update the image
-        const updateImage = (index) => {
-            imgElement.src = property.images[index];
-        };
-
-        leftArrow.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            currentIndex = (currentIndex - 1 + property.images.length) % property.images.length;
-            //imgElement.src = property.images[currentIndex];
-            updateImage(currentIndex); // Update the image source
-        });
-
-        rightArrow.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            currentIndex = (currentIndex + 1) % property.images.length;
-            //imgElement.src = property.images[currentIndex];
-            updateImage(currentIndex); // Update the image source
+        if (statusFilter.value === "for-rent") {
+            priceFilter.innerHTML = `
+                <option value="all">All Prices</option>
+                <option value="1000">Under $1,000/month</option>
+                <option value="5000">$1,000 - $5,000/month</option>
+                <option value="5001">Over $5,000/month</option>
+            `;
+            priceFilter.style.display = "inline-block";
+            priceLabel.style.display = "inline-block";
+        } else if (statusFilter.value === "for-sale") {
+            priceFilter.innerHTML = `
+                <option value="all">All Prices</option>
+                <option value="200000">Under $200,000</option>
+                <option value="500000">$200,000 - $500,000</option>
+                <option value="1000000">$500,000 - $1,000,000</option>
+                <option value="1000001">Over $1,000,000</option>
+            `;
+            priceFilter.style.display = "inline-block";
+            priceLabel.style.display = "inline-block";
+        }
+    }
+    
+    // Event listeners for filters
+    [propertyType, bedroomFilter, priceFilter, locationFilter].forEach(el => {
+        el.addEventListener('change', () => {
+            currentPage = 1;
+            updatePropertyList();
         });
     });
-}
 
-// Pagination event listeners
-pageButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        currentPage = parseInt(button.dataset.page);
+    statusFilter.addEventListener('change', () => {
+        updatePriceFilter(); // Update price options when status changes
+        currentPage = 1;
         updatePropertyList();
     });
-});
 
-prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) currentPage--;
-    updatePropertyList();
-});
+    // Pagination listeners
+    pageButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            currentPage = parseInt(button.dataset.page);
+            updatePropertyList();
+        });
+    });
 
-nextBtn.addEventListener("click", () => {
-    if (currentPage < 3) currentPage++;
-    updatePropertyList();
-});
+    prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePropertyList();
+        }
+    });
 
-// Event Listeners
-propertyType.addEventListener("change", updatePropertyList);
-statusFilter.addEventListener("change", () => {
-    updatePriceFilter();
-    updatePropertyList();
-});
-bedroomFilter.addEventListener("change", updatePropertyList);
-priceFilter.addEventListener("change", updatePropertyList);
+    nextBtn.addEventListener("click", () => {
+        const totalPages = Math.ceil(allProperties.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePropertyList();
+        }
+    });
 
-// Initial Load
-updatePropertyList();
+    // --- Pre-filter from URL Logic ---
+    function applyUrlFilters() {
+        const params = new URLSearchParams(window.location.search);
+
+        const type = params.get('type');
+        const location = params.get('location');
+        const price = params.get('price');
+        const status = params.get('status');
+
+        if (type) {
+            propertyType.value = type;
+        }
+        if (location) {
+            locationFilter.value = location;
+        } 
+        if (status) {
+            statusFilter.value = status;
+            updatePriceFilter();
+        }
+        if (price) {
+            updatePriceFilter();
+            priceFilter.value = price;
+        }
+    }
+
+    // Call the new function right before fetching properties
+    applyUrlFilters();
+    // Initial fetch to load the properties when the page starts
+    fetchProperties();
+});

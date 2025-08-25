@@ -1,4 +1,4 @@
-USE real_estate;
+USE real_estate_db;
 
 DELIMITER $$
 
