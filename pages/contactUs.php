@@ -12,6 +12,7 @@
 
     <?php 
         include '../header_footer/header.php'; 
+        session_start();
     ?>
 
     <section class="about-intro">
@@ -25,9 +26,8 @@
 
     <main class="container">
         <section class="contact-section">
-            <!-- Form Container -->
             <div class="contact-container">
-            <form action="../backend/appointment.php" method="POST" class="contact-form">
+            <form action="../backend/contact_form_handler.php" method="POST" class="contact-form">
                 <h2>Get in Touch</h2>
                 <div class="input-group">
                     <label for="name">Name</label>
@@ -46,7 +46,7 @@
                     <input type="number" id="property_id" name="property_id" placeholder="Enter property ID">
 
                     <label for="appointment_date">Appointment Date</label>
-                    <input type="datetime-local" id="appointment_date" name="appointment_date" required>
+                    <input type="datetime-local" id="appointment_date" name="appointment_date">
 
                     <label for="message">Message</label>
                     <textarea id="message" name="message" cols="30" rows="6" required placeholder="Write your message here..."></textarea>
@@ -57,10 +57,10 @@
 
             </div>
 
-            <!-- Contact Info Container -->
             <div class="info-container">
                 <div class="contact-info">
                     <h2>Contact Information</h2>
+                    <img src="../assets/MKO-company-images/reception.jpg" alt="Reception Area" class="contact-image">
                     <div class="info-box">
                         <h3>Our Offices</h3>
                         <p>
@@ -77,6 +77,7 @@
                         </ul>
                     </div>
 
+                    <img src="../assets/MKO-company-images/An_inviting_reception_area_for_a_real_estate_office.jpeg" alt="Reception Area" class="contact-image">
                     <div class="info-box">
                         <h3>Find Us</h3>
                         <p><strong>Email:</strong> <a href="mailto:MKO@realestate.com">MKO@realestate.com</a></p>
@@ -88,7 +89,6 @@
         </section>
 
 
-        <!-- Location Section -->
         <section class="map-section">
             <h2>Our Location</h2>
             <p>Visit our head office at the address below, or use the map to find the nearest branch.</p>
@@ -100,5 +100,17 @@
         include '../header_footer/footer.php'; 
     ?>
 
+    <script>
+        <?php
+        if (isset($_SESSION['success_message'])) {
+            echo "alert('" . addslashes($_SESSION['success_message']) . "');";
+            unset($_SESSION['success_message']);
+        }
+        if (isset($_SESSION['error_message'])) {
+            echo "alert('" . addslashes($_SESSION['error_message']) . "');";
+            unset($_SESSION['error_message']);
+        }
+        ?>
+    </script>
 </body>
 </html>

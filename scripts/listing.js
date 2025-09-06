@@ -156,13 +156,24 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (result.status === 'removed') {
                 button.innerHTML = '&#x2606;'; // Hollow star
                 button.classList.remove('bookmarked');
+
+                // If on the customer dashboard, remove the card immediately
+                if (window.location.pathname.includes('customer_dashboard.php')) {
+                    const cardToRemove = button.closest('.property-card');
+                    if (cardToRemove) {
+                        cardToRemove.remove();
+                    }
+                    if (propertyList.children.length === 0) {
+                        propertyList.innerHTML = '<p class="no-properties-message">You have no bookmarked properties yet. You can add properties from the listing page.</p>';
+                    }
+                }
             }
         } catch (error) {
             console.error('Bookmark error:', error);
         }
     }
 
-    // --- Filtering and Pagination (Unchanged) ---
+    // --- Filtering and Pagination ---
     
     // Updates the property list based on current filters and page
     function updatePropertyList() {

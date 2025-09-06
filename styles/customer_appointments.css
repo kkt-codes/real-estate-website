@@ -1,0 +1,62 @@
+.appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.appointment-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.appointment-card h3 {
+    margin: 0 0 1rem;
+    color: #343a40;
+}
+
+.appointment-card p {
+    margin: 5px 0;
+    color: #6c757d;
+}
+
+.appointment-card .date {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.appointment-status {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+}
+
+.appointment-status .status-scheduled {
+    color: #ffc107; /* Yellow */
+}
+
+.appointment-status .status-confirmed {
+    color: #28a745; /* Green */
+}
+
+.appointment-status .status-cancelled {
+    color: #dc3545; /* Red */
+}
+
+.appointment-actions {
+    margin-top: 1rem;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+}

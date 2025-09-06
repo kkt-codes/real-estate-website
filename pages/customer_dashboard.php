@@ -28,41 +28,60 @@ $bookmarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
     <link rel="stylesheet" href="../styles/general.css">
-    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/dashboard_styles.css">
+    <link rel="stylesheet" href="../header_footer/header.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome, <?php echo htmlspecialchars($user_name); ?>!</h1>
+    <?php include '../header_footer/header.php'; ?>
+    <div class="dashboard-container">
+        <?php include '../header_footer/sidebar.php'; ?>
+        <div class="dashboard-content">
+            <div class="content-header">
+                <h1>Welcome, <?php echo htmlspecialchars($user_name); ?>!</h1>
+                <h2>Your Bookmarked Properties</h2>
+            </div>
 
-        <section>
-            <h2>Your Bookmarked Properties</h2>
             <?php if (empty($bookmarks)): ?>
                 <p>You have no bookmarked properties yet. You can add properties from the listing page.</p>
             <?php else: ?>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Location</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($bookmarks as $property): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($property['location']); ?></td>
-                                <td><?php echo ucfirst($property['type']); ?></td>
-                                <td><?php echo ($property['status'] == 'for-rent') ? 'For Rent' : 'For Sale'; ?></td>
-                                <td>$<?php echo number_format($property['price'], 2); ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <div class="property-grid" id="property-list">
+                    <?php foreach ($bookmarks as $property): ?>
+                        <div class="property-card" data-property-id="<?php echo $property['property_id']; ?>" data-images="<?php echo $property['images']; ?>" data-current-image-index="0">
+                            <div class="image-container">
+                                <button class="btn-property-type"><?php echo $property['status'] === 'for-rent' ? 'For Rent' : 'For Sale'; ?></button>
+                                <button class="bookmark-btn bookmarked" data-property-id="<?php echo $property['property_id']; ?>">&#x2605;</button>
+                                <img src="<?php echo explode(',', $property['images'])[0]; ?>" alt="Property Image">
+                            </div>
+                            <a href="property_detail.php?id=<?php echo $property['property_id']; ?>" class="property-info-link">
+                                <div class="property-card-info">
+                                    <p class="price">$<?php echo number_format($property['price']); ?></p>
+                                    <p class="description"><?php echo htmlspecialchars($property['short_description']); ?></p>
+                                    <p class="location">
+                                        <img src="../assets/icons/properties/location_on_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="location icon">
+                                        <span><?php echo htmlspecialchars($property['location']); ?></span>
+                                    </p>
+                                    <div class="details">
+                                        <div class="detail-item">
+                                            <img src="../assets/icons/properties/area_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="area icon">
+                                            <span><?php echo $property['area']; ?> sqm</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <img src="../assets/icons/properties/bed_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bedroom icon">
+                                            <span><?php echo $property['bedrooms']; ?> Beds</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <img src="../assets/icons/properties/bathroom_24dp_000000_FILL0_wght300_GRAD0_opsz24.svg" alt="bathroom icon">
+                                            <span><?php echo $property['bathrooms']; ?> Baths</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <script type="module" src="../scripts/listing.js"></script>
             <?php endif; ?>
-        </section>
-
-        <a href="../logout.php">Logout</a>
+        </div>
     </div>
 </body>
 </html>

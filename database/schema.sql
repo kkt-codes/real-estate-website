@@ -20,7 +20,7 @@ CREATE TABLE properties (
     bedrooms INT NOT NULL,
     bathrooms INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    status ENUM('for-sale', 'for-rent') NOT NULL,
+    status ENUM('for-sale', 'for-rent', 'sold', 'rented') NOT NULL,
     type ENUM('apartment', 'villa') NOT NULL,
     short_description VARCHAR(255),
     description TEXT,
@@ -49,8 +49,22 @@ CREATE TABLE appointments (
     property_id INT,
     appointment_date DATETIME NOT NULL,
     message TEXT,
+    status ENUM('scheduled', 'confirmed', 'cancelled') NOT NULL DEFAULT 'scheduled',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (property_id) REFERENCES properties(property_id) ON DELETE CASCADE
+);
+
+-- Table for contact messages
+CREATE TABLE contact_messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(255),
+    message TEXT NOT NULL,
+    property_id INT,
+    appointment_date DATETIME,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Table for transactions

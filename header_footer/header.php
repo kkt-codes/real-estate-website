@@ -1,10 +1,13 @@
+<?php
+session_start();
+?>
 <link rel="stylesheet" href="../header_footer/header.css">
 <script src="../header_footer/header.js" defer></script>
 <header>
     <nav class="navbar">
         <div class="navbar-inner">
             <button class="hamburger-menu">
-                <img src="../assets/icons/menu_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
+                <img src="../assets/icons/navbar/menu_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
             </button>
             <!-- 1st container -->
             <div class="nav-logo-img">
@@ -15,7 +18,7 @@
             <ul class="nav-list sidebar">
                 <li>
                     <button class="close-sidebar-button">
-                        <img src="../assets/icons/close_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
+                        <img src="../assets/icons/navbar/close_24dp_000000_FILL0_wght200_GRAD0_opsz24.svg" alt="">
                     </button>
                 </li>
                 <li class="nav-item">
@@ -35,16 +38,6 @@
                     </ul>
                 </li>
     
-                <!-- <li class="nav-item">
-                    <a href="#" class="link">
-                        <span class="title">Property</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class = "sub-menu">
-                        <li><a href="#">Villa</a></li>
-                        <li><a href="#">Apartment</a></li>
-                    </ul>
-                </li> -->
                 <li class="nav-item">
                     <a href="../pages/servicesPage.php" class="link">
                         <span class="title">Services</span>    
@@ -58,8 +51,6 @@
                     </a>
                     <ul class = "sub-menu">
                         <li><a href="../pages/aboutUs.php">About Us</a></li>
-                        <!-- <li><a href="../pages/aboutUs.php">Faq</a></li> -->
-                        <!-- <li><a href="../pages/servicesPage.php">Services</a></li> -->
                         <li><a href="../pages/conditionPage.php">Terms and Conditions</a></li>
                     </ul>
                 </li>
@@ -70,20 +61,28 @@
                     </a>
                 </li>
     
-                <!-- <li class="nav-item">
-                    <a href="#">
-                        <img class="person-icon" src="../assets/icons/person_24dp_000000_FILL0_wght100.svg" alt="A person icon"> 
-                        <span class="login-register">Login/Register</span> 
-                    </a>
-                </li> -->
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo ($_SESSION['user_type'] === 'agent') ? '../pages/agent_dashboard.php' : '../pages/customer_dashboard.php'; ?>" class="link">
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
     
             <!-- 3rd container -->
             <div class="btn-container">
-                <button class = "btn-login">
-                    <span><img src="../assets/icons/login_24dp_FFF_FILL1_wght400_GRAD0_opsz24.svg" alt=""></span>
-                    <a href="../pages/loginPage.php">Sign In</a>
-                </button>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <button class = "btn-login">
+                        <span><img src="../assets/icons/navbar/logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="A logout button"></span>
+                        <a href="../backend/logout.php">Log Out</a>
+                    </button>
+                <?php else: ?>
+                    <button class = "btn-login">
+                        <span><img src="../assets/icons/navbar/login_24dp_FFF_FILL1_wght400_GRAD0_opsz24.svg" alt="A login button"></span>
+                        <a href="../pages/loginPage.php">Sign In</a>
+                    </button>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

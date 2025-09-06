@@ -65,5 +65,12 @@
 
     <?php include '../header_footer/footer.php'; ?>
     <script src="../scripts/property_detail.js"></script>
+    
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('appointment') === 'success') {
+            alert('Your appointment has been successfully scheduled!');
+        }
+    </script>
 </body>
 </html>

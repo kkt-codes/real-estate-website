@@ -27,7 +27,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Adjust opacity (0 = fully transparent, 1 = fully opaque) */
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 .hero-content {
@@ -269,7 +269,8 @@
 }
 
 .description{
-    font-size: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.4;
     font-weight: 500;
     margin-bottom: 1.5rem;
     min-height: 4rem;

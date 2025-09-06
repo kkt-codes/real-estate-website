@@ -6,156 +6,181 @@
     position: relative;
     height: 30vh;
     margin-top: 10vh;
-    overflow: hidden;
 }
-
 .about-intro::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.629); 
-    z-index: 1; /* Places the overlay above the background */
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
-
-.text-container{
+.text-container {
     max-width: 120rem;
     margin: auto;
 }
-
 .intro-text {
-    position: relative; /* Positioning context for text */
-    color: white; 
-    z-index: 2; /* Places the text above the overlay */
-    text-align: left; 
-    padding: 9rem 0;
+    position: relative;
+    color: white;
+    z-index: 2;
+    text-align: left;
+    padding: 9rem 2rem;
 }
-
 .intro-text span {
     font-size: 1.6rem;
-    display: block; /* Make the span a block element for spacing */
-    margin-bottom: 10px; /* Space between span and heading */
+    display: block;
+    margin-bottom: 1rem;
 }
-
-h1{
+h1 {
     font-size: 4rem;
     font-weight: 500;
 }
 
-main{
+/* Main content container for consistent padding */
+.about-container {
     max-width: 120rem;
-    margin: 0 auto;
+    margin: 4rem auto;
+    padding: 2rem;
 }
 
-h2{
-    font-size: 2.4rem;
+/* Shared section styles */
+.our-story, .why-choose-us, .faq-section {
+    margin-bottom: 6rem;
+}
+h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-p{
-    font-size: 1.6rem;
-}
-
-/* Image Text Sections */
-.image-text-wrapper {
+/* Our Story Section */
+.our-story {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    padding: 4rem 0;
+    gap: 4rem;
 }
-
-.text-content {
+.story-image {
     flex: 1;
-    padding: 2rem;
+}
+.story-image img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1.5rem rgba(0,0,0,0.1);
+}
+.story-content {
+    flex: 1.5;
+}
+.story-content h2 {
+    text-align: left;
+}
+.story-content p {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
-.image-content {
-    flex: 1;
-    padding: 2rem;
+/* Why Choose Us Section */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.feature-card {
+    background: #f9f9f9;
+    padding: 3rem;
+    border-radius: 1rem;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
-.image-content img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    
+.feature-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.1);
 }
-
-/* Numbers Section */
-.numbers {
-    text-align: center;
-    padding: 4rem 0;
+.feature-icon {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 1.5rem;
 }
-
-.number-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.number-item {
-    margin: 2rem;
-    text-align: center;
-}
-
-.number-item img {
-    width: 8rem;
-    height: 8rem;
+.feature-card h3 {
+    font-size: 2rem;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
-
-.number {
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 1rem;
+.feature-card p {
+    font-size: 1.5rem;
+    line-height: 1.6;
 }
 
-.faq{
-    max-width: 120rem;
+/* FAQ Section */
+.faq-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+}
+.faq-content h2 {
+    text-align: left;
+}
+.faq-content p {
+    font-size: 1.6rem;
+    line-height: 1.7;
 }
 
-.faq-item {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid white;
-    padding: 1rem 0;
-    transition: background-color 0.3s ease;
+.faq-accordion .faq-item {
+    border-bottom: 0.1rem solid #e0e0e0;
 }
-.faq-item:hover {
-    background-color:lightgray;
+.faq-accordion .faq-item:first-child {
+    border-top: 0.1rem solid #e0e0e0;
 }
 
 .faq-question {
     width: 100%;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: #111;
+    background: none;
     border: none;
+    padding: 2rem 0;
     text-align: left;
+    font-size: 1.8rem;
+    font-weight: 500;
     cursor: pointer;
-    border-radius: 0.5rem;
-    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-icon {
+    font-size: 2.4rem;
+    font-weight: 300;
+    transition: transform 0.3s;
 }
 
 .faq-answer {
-    display: none;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-    font-size: 1.6rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+.faq-answer p {
+    padding: 0 0 2rem 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .image-text-wrapper {
+/* Active state for FAQ */
+.faq-item.active .faq-answer {
+    max-height: 20rem; /* Adjust as needed */
+    padding-bottom: 2rem;
+}
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 76.8rem) {
+    .our-story, .faq-section {
         flex-direction: column;
+        grid-template-columns: 1fr;
     }
-
-    .number-grid {
-        flex-direction: column; /* stack the numbers section */
+    .story-content h2, .faq-content h2 {
+        text-align: center;
     }
-
 }
