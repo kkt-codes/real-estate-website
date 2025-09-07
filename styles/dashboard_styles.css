@@ -179,7 +179,7 @@ body {
 }
 
 .property-card-info {
-    padding: 15px;
+    padding: 1.5rem;
 }
 .property-card-info h3 {
     margin: 0 0 1rem;
@@ -237,18 +237,7 @@ body {
 }
 
 
-@media (max-width: 992px) {
-    .dashboard-sidebar {
-        left: -25rem; /* Hide sidebar by default */
-    }
-    .dashboard-content {
-        margin-left: 0;
-        width: 100%;
-    }
-    .dashboard-sidebar.active {
-        left: 0; /* Show sidebar when active */
-    }
-}
+
 
 /* Modal Styles */
 .modal {
@@ -279,7 +268,7 @@ body {
 .close-button {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: bold;
 }
 
@@ -305,7 +294,7 @@ body {
 #edit-form textarea,
 #transaction-form input[type="number"] {
     width: 100%;
-    padding: 0.rem8;
+    padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 0.4rem;
     box-sizing: border-box;
@@ -373,4 +362,127 @@ body {
 .property-info-link:hover {
     text-decoration: none;
     color: inherit;
+}
+
+.container h1 {
+    font-size: 1.8rem;
+}
+
+/* Table Styles for Transactions Page */
+.transactions-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.transactions-list th, .transactions-list td {
+    padding: 1.2rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.transactions-list th {
+    background-color: #0487c0;
+    color: white;
+    font-weight: bold;
+}
+
+.transactions-list tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternating row color */
+}
+
+.transactions-list tr:hover {
+    background-color: #e0e0e0; /* Row hover effect */
+}
+
+
+/* Form Container Styles for Edit and Add Property Pages */
+.form-container {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-container h1 {
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    font-size: 1.6rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 10rem;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    text-align: right;
+}
+
+.form-actions button {
+    background-color: #06acf3;
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: background-color 0.3s;
+}
+
+.form-actions button:hover {
+    background-color: #0588c0;
+}
+
+/* Responsive styles for icon-only sidebar on smaller screens */
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        width: 8rem;
+    }
+
+    .dashboard-content {
+        margin-left: 8rem; /* Match the collapsed sidebar width */
+    }
+
+    .sidebar-header h2,
+    .sidebar-nav a span {
+        display: none;
+    }
+
+    .sidebar-nav a {
+        justify-content: center;
+    }
 }

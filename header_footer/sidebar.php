@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <div class="dashboard-sidebar">
     <div class="sidebar-header">
-        <h2>Dashboard</h2>
+        <h2 class="sidebar-title">Dashboard</h2>
     </div>
     <nav class="sidebar-nav">
         <ul>

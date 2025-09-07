@@ -96,21 +96,7 @@
         </section>
     </main>
 
-    <?php 
-        include '../header_footer/footer.php'; 
-    ?>
-
-    <script>
-        <?php
-        if (isset($_SESSION['success_message'])) {
-            echo "alert('" . addslashes($_SESSION['success_message']) . "');";
-            unset($_SESSION['success_message']);
-        }
-        if (isset($_SESSION['error_message'])) {
-            echo "alert('" . addslashes($_SESSION['error_message']) . "');";
-            unset($_SESSION['error_message']);
-        }
-        ?>
-    </script>
+    <?php include '../header_footer/footer.php'; ?>
+    <?php include '../backend/alert_handler.php'; ?>
 </body>
 </html>
