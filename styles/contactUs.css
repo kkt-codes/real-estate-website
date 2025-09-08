@@ -67,7 +67,7 @@ body {
 .container {
     max-width: 120rem;
     margin: auto;
-    padding: 15rem 2rem 5rem;
+    padding: 5rem 2rem 5rem;
 }
 
 .contact-section {
@@ -139,7 +139,7 @@ textarea {
 
 .btn {
     background-color: var(--main-color);
-    color: white;
+    color: var(--container-bg);
     border: none;
     cursor: pointer;
     font-weight: 600;
@@ -160,11 +160,6 @@ textarea {
     justify-content: space-between;
 }
 
-/* .contact-image-first {
-    height: 20rem;
-    object-fit: cover;
- */
-
 .contact-image {
     width: 100%;
     border-radius: 1rem;
@@ -177,6 +172,10 @@ textarea {
     margin-bottom: 1rem;
 }
 
+.info-box a{
+    text-decoration: none;
+    color: var(--text-color);
+}
 .info-box p, 
 .info-box ul {
     font-size: 1.6rem;
@@ -185,7 +184,6 @@ textarea {
 }
 
 .info-box ul {
-    /* list-style-type: none; */
     padding: 0;
 }
 

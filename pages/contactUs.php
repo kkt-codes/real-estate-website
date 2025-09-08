@@ -60,12 +60,12 @@
             <div class="info-container">
                 <div class="contact-info">
                     <h2>Contact Information</h2>
-                    <img src="../assets/MKO-company-images/reception.jpg" alt="Reception Area" class="contact-image">
+                    <img src="../assets/MKO-company-images/An_inviting_reception_area_for_a_real_estate_office.jpeg" alt="Reception Area" class="contact-image">
                     <div class="info-box">
                         <h3>Our Offices</h3>
                         <p>
                             <strong>Head Office:</strong> 
-                            <a href="#">123 Main Street, City, State, 56789</a>
+                            <a href="#">8 Kilo Plaza, Addis Ababa, Ethiopia</a>
                         </p>
                         <p>
                             <strong>Branches:</strong>
@@ -77,11 +77,10 @@
                         </ul>
                     </div>
 
-                    <img src="../assets/MKO-company-images/An_inviting_reception_area_for_a_real_estate_office.jpeg" alt="Reception Area" class="contact-image">
                     <div class="info-box">
                         <h3>Find Us</h3>
                         <p><strong>Email:</strong> <a href="mailto:MKO@realestate.com">MKO@realestate.com</a></p>
-                        <p><strong>Phone:</strong> <a href="tel:1234567890">(123) 456-7890</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:1234567890">+251-114-000-111</a></p>
                         <p><strong>Hours:</strong> Mon-Fri: 9am - 6pm</p>
                     </div>
                 </div>
