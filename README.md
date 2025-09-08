@@ -46,4 +46,4 @@ To get this project up and running on your local machine, you'll need to set up 
     ```
     You should now see the MKO Real Estate homepage!
 
-![This is the home page](./README_MEDIA/Home Page.png)
+![This is the home page](./README_MEDIA/Home%20Page.png)
