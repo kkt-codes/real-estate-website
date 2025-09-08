@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_type'] = $user['user_type'];
+                $_SESSION['user_email'] = $user['email'];
 
                 // Redirect based on user type
                 if ($user['user_type'] === 'agent') {

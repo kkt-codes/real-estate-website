@@ -11,8 +11,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'agent') {
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 
-// Fetch agent's properties that are still available
-$stmt = $pdo->prepare("SELECT * FROM properties WHERE agent_id = ? AND (status = 'for-sale' OR status = 'for-rent')");
+$stmt = $pdo->prepare("SELECT * FROM properties WHERE agent_id = ?");
 $stmt->execute([$user_id]);
 $properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,6 +72,19 @@ $upcoming_appointments = $stmt->fetchColumn();
                 <?php foreach ($properties as $property): ?>
                     <div class="property-card" data-property-id="<?php echo $property['property_id']; ?>" data-price="<?php echo $property['price']; ?>" data-status="<?php echo $property['status']; ?>">
                         <div class="image-container">
+                            <button class="btn-property-type">
+                                <?php
+                                if ($property['status'] === 'for-sale') {
+                                    echo 'For Sale';
+                                } elseif ($property['status'] === 'for-rent') {
+                                    echo 'For Rent';
+                                } elseif ($property['status'] === 'sold') {
+                                    echo 'Sold';
+                                } elseif ($property['status'] === 'rented') {
+                                    echo 'Rented';
+                                }
+                                ?>
+                            </button>
                             <a href="property_detail.php?id=<?php echo $property['property_id']; ?>" class="property-link">
                                 <img src="<?php echo explode(',', $property['images'])[0]; ?>" alt="Property Image">
                             </a>

@@ -14,6 +14,7 @@
 .appointment-card h3 {
     margin: 0 0 1rem;
     color: #343a40;
+    font-size: 1.6rem;
 }
 
 .appointment-card p {
@@ -32,15 +33,15 @@
 }
 
 .appointment-status .status-scheduled {
-    color: #ffc107; /* Yellow */
+    color: #d1a110;
 }
 
 .appointment-status .status-confirmed {
-    color: #28a745; /* Green */
+    color: #28a745;
 }
 
 .appointment-status .status-cancelled {
-    color: #dc3545; /* Red */
+    color: #dc3545;
 }
 
 .appointment-actions {

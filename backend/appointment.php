@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $property_id = filter_var($_POST['property_id'], FILTER_VALIDATE_INT);
     $appointment_date = $_POST['appointment_date'];
-    $message = htmlspecialchars($_POST['message']);
+    $message = $_POST['message'];
 
     // Validate the email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
